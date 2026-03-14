@@ -3,7 +3,7 @@
 **The litmus test for open source.**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Release](https://img.shields.io/github/v/release/GangdanLee/openlitmus)](https://github.com/GangdanLee/openlitmus/releases)
+[![Release](https://img.shields.io/github/v/release/GangdanLee/OpenLitmus)](https://github.com/GangdanLee/OpenLitmus/releases)
 
 > You found a promising open-source project. Great README, active commits, 2K stars. You integrate it into production. Three months later: zero tests, one maintainer who just quit, and `SECRET_KEY = "change-me-in-production"` hardcoded in the config.
 >
@@ -55,7 +55,7 @@ Here's OpenLitmus applied to [Clawith](https://github.com/dataelement/Clawith), 
 git clone --depth 100 <repo-url> _eval && cd _eval
 
 # 2. Run the data collector
-curl -sL https://raw.githubusercontent.com/GangdanLee/openlitmus/main/tools/collect.sh | bash
+curl -sL https://raw.githubusercontent.com/GangdanLee/OpenLitmus/main/tools/collect.sh | bash
 
 # 3. Score using the framework
 #    → See framework/openlitmus-framework.md for scoring anchors

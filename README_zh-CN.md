@@ -3,7 +3,7 @@
 **给开源项目做一次全面体检。**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Release](https://img.shields.io/github/v/release/GangdanLee/openlitmus)](https://github.com/GangdanLee/openlitmus/releases)
+[![Release](https://img.shields.io/github/v/release/GangdanLee/OpenLitmus)](https://github.com/GangdanLee/OpenLitmus/releases)
 
 > 你发现了一个看起来很不错的开源项目。README 写得很好，commit 活跃，两千颗 Star。你集成到了生产环境。三个月后你发现：零测试、唯一的核心开发者刚离职、配置文件里写着 `SECRET_KEY = "change-me-in-production"`。
 >
@@ -49,7 +49,7 @@ OpenLitmus 是一个纯静态分析框架，通过 **6 个维度 24 个指标** 
 git clone --depth 100 <repo-url> _eval && cd _eval
 
 # 2. 运行数据采集脚本
-curl -sL https://raw.githubusercontent.com/GangdanLee/openlitmus/main/tools/collect.sh | bash
+curl -sL https://raw.githubusercontent.com/GangdanLee/OpenLitmus/main/tools/collect.sh | bash
 
 # 3. 对照评分锚点打分
 #    → 详见 framework/openlitmus-framework.md

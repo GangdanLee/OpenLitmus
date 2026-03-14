@@ -1,6 +1,6 @@
-# 🦞 Clawith — OSHEF 评估报告
+# 🦞 Clawith — OpenLitmus 评估报告
 
-> **框架版本**: OSHEF v1.0
+> **框架版本**: OpenLitmus v1.0
 > **评估场景**: 综合（调研 / PoC / 生产 / 二次开发 四场景加权）
 > **数据截止**: 2026-03-14
 
