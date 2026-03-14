@@ -1,4 +1,4 @@
-# 开源项目健康度评估框架 (OSHEF)
+# 开源项目健康度评估框架 (OpenLitmus)
 
 > **Open Source Health Evaluation Framework** v1.1
 > 纯静态分析框架 · 无需部署运行 · 侧重 Web 全栈应用
@@ -18,13 +18,13 @@
 
 ```mermaid
 graph TB
-    OSHEF[OSHEF 总分]
-    OSHEF --> D1["① 代码规模与结构"]
-    OSHEF --> D2["② 代码质量与安全"]
-    OSHEF --> D3["③ 工程成熟度"]
-    OSHEF --> D4["④ 社区与可持续性"]
-    OSHEF --> D5["⑤ 文档与可及性"]
-    OSHEF --> D6["⑥ 战略与生态定位"]
+    OpenLitmus[OpenLitmus 总分]
+    OpenLitmus --> D1["① 代码规模与结构"]
+    OpenLitmus --> D2["② 代码质量与安全"]
+    OpenLitmus --> D3["③ 工程成熟度"]
+    OpenLitmus --> D4["④ 社区与可持续性"]
+    OpenLitmus --> D5["⑤ 文档与可及性"]
+    OpenLitmus --> D6["⑥ 战略与生态定位"]
     
     D1 --> D1a[1.1 代码量分布]
     D1 --> D1b[1.2 文件粒度]

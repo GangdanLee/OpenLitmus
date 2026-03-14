@@ -1,128 +1,134 @@
-# OSHEF — Open Source Health Evaluation Framework
+# 🧪 OpenLitmus
 
-> Before adopting an open-source project, give it a thorough health check.
+**The litmus test for open source.**
 
-**OSHEF** is a static analysis framework for evaluating the health of open-source projects. It provides a structured, reproducible methodology to assess code quality, security, engineering maturity, community sustainability, documentation, and strategic positioning — all without deploying or running the project.
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Release](https://img.shields.io/github/v/release/GangdanLee/openlitmus)](https://github.com/GangdanLee/openlitmus/releases)
+
+> You found a promising open-source project. Great README, active commits, 2K stars. You integrate it into production. Three months later: zero tests, one maintainer who just quit, and `SECRET_KEY = "change-me-in-production"` hardcoded in the config.
+>
+> **OpenLitmus exists so you never get burned again.**
 
 🌐 [中文文档](README_zh-CN.md)
 
 ---
 
-## Why OSHEF?
+## What It Does
 
-Most open-source evaluations stop at reading the README and checking the star count. OSHEF goes deeper:
+OpenLitmus is a static analysis framework that evaluates open-source project health across **6 dimensions** and **24 indicators** — without deploying or running the project.
 
-- **Adversarial verification** — Don't trust self-descriptions. Verify claims against source code.
-- **Quantifiable metrics** — Use data (commit history, file sizes, dependency counts) instead of gut feelings.
-- **Scenario-aware scoring** — Different weights for research, PoC, production, and fork/extend use cases.
-- **Reproducible** — Every check has defined tools, commands, and scoring anchors.
+It replaces "read the README and check the stars" with structured, evidence-based assessment.
+
+**Core principles:**
+- 🔍 **Adversarial** — Don't trust self-descriptions. Verify claims against source code.
+- 📊 **Quantifiable** — Data over gut feelings. Every score has a defined anchor.
+- 🎯 **Scenario-aware** — Different weights for research, PoC, production, and fork use cases.
+- 🔁 **Reproducible** — Same project → same score, regardless of who runs the evaluation.
+
+---
+
+## Real-World Example
+
+Here's OpenLitmus applied to [Clawith](https://github.com/dataelement/Clawith), a multi-agent collaboration platform:
+
+| Scenario | Score | Grade | Verdict |
+|----------|-------|-------|---------|
+| Research | 5.3 | 🟡 C | ✅ Worth studying |
+| PoC | 4.7 | 🟡 C | ⚠️ Proceed with caution |
+| Production | 4.1 | 🔴 D+ | ❌ Not ready |
+| Fork/Extend | 4.2 | 🔴 D+ | ❌ High refactor cost |
+
+**Discoveries the README wouldn't tell you:**
+- 🚩 All 138 commits pushed within 5 days (private repo dump, not "8 versions of iteration")
+- 🚩 Zero test files. Zero CI/CD pipelines.
+- 🚩 `SECRET_KEY = "change-me-in-production"` hardcoded in config
+- 🚩 A single 4,712-line React component
+
+[→ Full evaluation report](examples/clawith-evaluation.md)
+
+---
+
+## Quick Start
+
+```bash
+# 1. Clone the target project
+git clone --depth 100 <repo-url> _eval && cd _eval
+
+# 2. Run the data collector
+curl -sL https://raw.githubusercontent.com/GangdanLee/openlitmus/main/tools/collect.sh | bash
+
+# 3. Score using the framework
+#    → See framework/openlitmus-framework.md for scoring anchors
+```
+
+Or read the [full framework](framework/openlitmus-framework.md) to understand the methodology first.
 
 ---
 
 ## 6 Evaluation Dimensions
 
-| # | Dimension | What it measures |
-|---|-----------|-----------------|
-| ① | **Code Scale & Structure** | Code size, file granularity, module coupling, dependency management |
-| ② | **Code Quality & Security** | Claim verification, security baseline, defensive programming, code smells |
-| ③ | **Engineering Maturity** | Test coverage, CI/CD, version management, database migrations |
-| ④ | **Community & Sustainability** | Bus factor, issue ecosystem, development activity, git history authenticity |
-| ⑤ | **Documentation & Accessibility** | Onboarding docs, architecture docs, API docs, i18n |
-| ⑥ | **Strategy & Ecosystem** | Product positioning, competitive differentiation, team background, commercial viability |
+| # | Dimension | Key Indicators |
+|---|-----------|---------------|
+| ① | **Code Scale & Structure** | File granularity, module coupling, dependency management |
+| ② | **Code Quality & Security** | Claim verification, security baseline, code smells |
+| ③ | **Engineering Maturity** | Test coverage, CI/CD, version management |
+| ④ | **Community & Sustainability** | Bus factor, issue ecosystem, git history authenticity |
+| ⑤ | **Documentation** | Onboarding, architecture docs, API docs, i18n |
+| ⑥ | **Strategy & Ecosystem** | Product positioning, competitive differentiation, team background |
 
-Each dimension contains 4 sub-indicators with specific scoring anchors. See the [full framework](framework/oshef-framework.md) for details.
-
----
-
-## Quick Start (5 minutes)
-
-### 1. Clone the target project
-
-```bash
-git clone --depth 100 <repo-url> _eval_tmp && cd _eval_tmp
-```
-
-### 2. Run the data collection script
-
-```bash
-curl -sL https://raw.githubusercontent.com/GangdanLee/oshef/main/tools/collect.sh | bash
-```
-
-Or manually run the commands from the [data collection toolkit](framework/oshef-framework.md#数据采集工具链).
-
-### 3. Score each dimension
-
-Use the [scoring anchors](framework/references/scoring-anchors.md) to rate each indicator 0-10.
-
-### 4. Calculate weighted score
-
-Choose your scenario (Research / PoC / Production / Fork) and apply the corresponding weights.
-
-### 5. Generate report
-
-Follow the [report template](framework/oshef-framework.md#step-5-撰写报告) structure. See [Clawith evaluation](examples/clawith-evaluation.md) for a complete example.
+Each indicator has defined **scoring anchors** (not vibes) → [See all anchors](framework/references/scoring-anchors.md)
 
 ---
 
-## Scoring System
+## Scoring
 
-### Scenario Weights
+**4 scenarios, different weights:**
 
-| Dimension | Research | PoC | Production | Fork/Extend |
-|-----------|----------|-----|------------|-------------|
-| ① Code Scale & Structure | 0.10 | 0.10 | 0.15 | 0.20 |
-| ② Code Quality & Security | 0.10 | 0.15 | 0.25 | 0.25 |
-| ③ Engineering Maturity | 0.05 | 0.15 | 0.25 | 0.20 |
-| ④ Community & Sustainability | 0.20 | 0.20 | 0.15 | 0.15 |
-| ⑤ Documentation & Accessibility | 0.25 | 0.20 | 0.10 | 0.10 |
-| ⑥ Strategy & Ecosystem | 0.30 | 0.20 | 0.10 | 0.10 |
+| Dimension | Research | PoC | Production | Fork |
+|-----------|----------|-----|------------|------|
+| ① Structure | 0.10 | 0.10 | 0.15 | 0.20 |
+| ② Quality | 0.10 | 0.15 | 0.25 | 0.25 |
+| ③ Maturity | 0.05 | 0.15 | 0.25 | 0.20 |
+| ④ Community | 0.20 | 0.20 | 0.15 | 0.15 |
+| ⑤ Docs | 0.25 | 0.20 | 0.10 | 0.10 |
+| ⑥ Strategy | 0.30 | 0.20 | 0.10 | 0.10 |
 
-### Grade Scale
-
-| Grade | Score | Meaning |
-|-------|-------|---------|
-| 🟢 A | 8.0-10.0 | Production-ready, safe to adopt at scale |
-| 🔵 B | 6.0-7.9 | Usable for PoC / small-scale production, needs reinforcement |
-| 🟡 C | 4.0-5.9 | Valuable but significant risks, research only |
-| 🔴 D | 2.0-3.9 | High risk, not recommended for direct use |
-| ⚫ F | 0-1.9 | Abandon |
-
----
-
-## Example: Clawith Evaluation
-
-See [examples/clawith-evaluation.md](examples/clawith-evaluation.md) for a complete evaluation of the [Clawith](https://github.com/dataelement/Clawith) multi-agent collaboration platform, demonstrating all 6 dimensions, quantitative data collection, red flags, and scenario-specific scoring.
-
-**Key findings from the example:**
-- Git public history was only 5 days (pushed from private repo)
-- Zero test files, zero CI/CD
-- Bus Factor = 1 for all core security modules
-- Research score: 🟡 C (5.3) | Production score: 🔴 D+ (4.1)
+**Grades:** 🟢 A (8+) Production-ready · 🔵 B (6-8) PoC-ready · 🟡 C (4-6) Research only · 🔴 D (2-4) High risk · ⚫ F (<2) Abandon
 
 ---
 
 ## For Antigravity Users
 
-OSHEF is available as an [Antigravity](https://github.com/google-deepmind/antigravity) skill. Copy the `skill/` directory to your `.agent/skills/` folder:
+OpenLitmus ships as an [Antigravity](https://github.com/google-deepmind/antigravity) skill:
 
 ```bash
-cp -r skill/oshef ~/.gemini/antigravity/scratch/.agent/skills/oshef
+cp -r skill/openlitmus ~/.gemini/antigravity/scratch/.agent/skills/openlitmus
 ```
 
-Then simply tell Antigravity: *"Evaluate this GitHub project: https://github.com/..."*
+Then just say: *"Evaluate this project: https://github.com/..."*
+
+---
+
+## Docs
+
+| Document | What's inside |
+|----------|--------------|
+| [Framework](framework/openlitmus-framework.md) | Full methodology, all 24 indicators, scoring system |
+| [Scoring Anchors](framework/references/scoring-anchors.md) | Numeric thresholds for dimensions ①-④ |
+| [Security Checklist](framework/references/security-checklist.md) | 9-item security baseline check |
+| [Example: Clawith](examples/clawith-evaluation.md) | Complete real-world evaluation |
 
 ---
 
 ## Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines. Key areas where contributions are welcome:
+Contributions welcome! See [CONTRIBUTING.md](CONTRIBUTING.md).
 
-- **Scoring anchors** — Calibration data from evaluating more projects
-- **Technology-specific checklists** — Go, Rust, Java adaptations
-- **Automated tooling** — Scripts for specific indicators
-
----
+**Most wanted:**
+- 📊 Scoring calibration data from evaluating more projects
+- 🔧 Technology-specific checklists (Go, Rust, Java)
+- 🤖 Automated tooling for specific indicators
 
 ## License
 
-MIT — See [LICENSE](LICENSE) for details.
+MIT — See [LICENSE](LICENSE).

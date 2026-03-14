@@ -1,12 +1,12 @@
 ---
-name: oshef
+name: openlitmus
 description: 对 GitHub 开源项目进行健康度评估。用户提供仓库 URL，自动执行代码规模分析、Git 考古、安全审查、社区评估、文档检查和战略分析，生成带评分的 Markdown 报告。当用户说「分析这个项目」「评估这个开源仓库」「这个项目靠谱吗」「能用于生产吗」「帮我评估一下这个 GitHub 项目」时触发。不适用于：私有仓库、需要运行时测试的场景、非代码类仓库（纯文档/数据集）。
 metadata:
   author: morgan
   version: 1.0.0
 ---
 
-# OSHEF Skill — 开源项目健康度评估
+# OpenLitmus Skill — 开源项目健康度评估
 
 ## 绝对约束
 
@@ -50,7 +50,7 @@ metadata:
 
 ### 1.1 克隆仓库
 ```bash
-git clone --depth 100 <url> /Users/<user>/.gemini/antigravity/scratch/_oshef_eval && cd /Users/<user>/.gemini/antigravity/scratch/_oshef_eval
+git clone --depth 100 <url> /Users/<user>/.gemini/antigravity/scratch/_openlitmus_eval && cd /Users/<user>/.gemini/antigravity/scratch/_openlitmus_eval
 ```
 
 ### 1.2 代码度量采集
@@ -184,7 +184,7 @@ grep -rn "CORSMiddleware\|cors\|Access-Control" --include='*.py' --include='*.ts
 ### 4.4 清理
 
 ```bash
-rm -rf /Users/<user>/.gemini/antigravity/scratch/_oshef_eval
+rm -rf /Users/<user>/.gemini/antigravity/scratch/_openlitmus_eval
 ```
 
 ---

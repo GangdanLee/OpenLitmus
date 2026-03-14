@@ -1,6 +1,6 @@
 # Scoring Anchors Reference
 
-Quick-reference scoring thresholds for OSHEF dimensions ①-④.
+Quick-reference scoring thresholds for OpenLitmus dimensions ①-④.
 For dimensions ⑤-⑥, use the checklist scoring method defined in the main framework.
 
 ---

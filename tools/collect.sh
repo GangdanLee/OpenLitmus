@@ -1,12 +1,12 @@
 #!/bin/bash
-# OSHEF Data Collection Script v1.0
+# OpenLitmus Data Collection Script v1.0
 # Usage: Run from the root of a cloned repository
-# Output: Prints structured data for OSHEF evaluation
+# Output: Prints structured data for OpenLitmus evaluation
 
 set -euo pipefail
 
 echo "======================================"
-echo "  OSHEF Data Collection"
+echo "  OpenLitmus Data Collection"
 echo "======================================"
 echo ""
 
@@ -110,6 +110,6 @@ fi
 echo ""
 echo "======================================"
 echo "  Collection complete."
-echo "  Use these results with the OSHEF"
+echo "  Use these results with the OpenLitmus"
 echo "  scoring anchors to evaluate the project."
 echo "======================================"

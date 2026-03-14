@@ -1,11 +1,11 @@
-# Contributing to OSHEF
+# Contributing to OpenLitmus
 
 Thank you for your interest in contributing! Here's how you can help.
 
 ## Areas for Contribution
 
 ### High-Value
-- **Scoring calibration** — Evaluate more projects using OSHEF and share your scoring data to help calibrate the anchors
+- **Scoring calibration** — Evaluate more projects using OpenLitmus and share your scoring data to help calibrate the anchors
 - **Security checklist expansion** — Add security checks specific to certain frameworks (Django, Rails, Spring, etc.)
 - **Automated tooling** — Scripts or tools that automate data collection for specific indicators
 

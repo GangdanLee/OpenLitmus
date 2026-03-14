@@ -1,34 +1,68 @@
-# OSHEF — 开源项目健康度评估框架
+# 🧪 OpenLitmus
 
-> 在采用开源项目前，用静态分析给它做一次全面体检。
+**给开源项目做一次全面体检。**
 
-**OSHEF** 是一个面向开源项目的静态分析评估框架。通过6个维度24个指标，对项目的代码质量、安全性、工程成熟度、社区健康度、文档完善度和战略定位进行系统化评估——无需部署运行项目。
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Release](https://img.shields.io/github/v/release/GangdanLee/openlitmus)](https://github.com/GangdanLee/openlitmus/releases)
+
+> 你发现了一个看起来很不错的开源项目。README 写得很好，commit 活跃，两千颗 Star。你集成到了生产环境。三个月后你发现：零测试、唯一的核心开发者刚离职、配置文件里写着 `SECRET_KEY = "change-me-in-production"`。
+>
+> **OpenLitmus 让你不再踩坑。**
 
 🌐 [English](README.md)
 
 ---
 
-## 核心理念
+## 它做什么
 
-1. **对抗性验证** — 不信任项目自述，一切结论需源码佐证
-2. **可量化优先** — 用数据（commit 历史、文件大小、依赖数量）替代直觉判断
-3. **场景敏感** — 调研/PoC/生产/二次开发四种场景使用不同权重
-4. **可复现** — 每项检查都有明确的工具、命令和评分标准
+OpenLitmus 是一个纯静态分析框架，通过 **6 个维度 24 个指标** 评估开源项目的健康度——无需部署、无需运行。
+
+用数据和源码验证取代"看看 README、数数 Star"。
+
+---
+
+## 真实案例
+
+用 OpenLitmus 评估 [Clawith](https://github.com/dataelement/Clawith)（多 Agent 协作平台）的结果：
+
+| 场景 | 评分 | 等级 | 建议 |
+|------|------|------|------|
+| 技术调研 | 5.3 | 🟡 C | ✅ 有研究价值 |
+| PoC 试用 | 4.7 | 🟡 C | ⚠️ 谨慎 |
+| 生产部署 | 4.1 | 🔴 D+ | ❌ 远未就绪 |
+| 二次开发 | 4.2 | 🔴 D+ | ❌ 改造成本极高 |
+
+**README 不会告诉你的事：**
+- 🚩 138 条 commit 全部集中在 5 天内（私有仓库一次性推送，并非"迭代了 8 个版本"）
+- 🚩 零测试文件、零 CI/CD
+- 🚩 配置文件硬编码默认密钥
+- 🚩 单个 React 组件 4712 行
+
+[→ 查看完整评估报告](examples/clawith-evaluation.md)
+
+---
 
 ## 快速开始
 
-1. 克隆目标项目：`git clone --depth 100 <url> _eval_tmp`
-2. 运行 [数据采集脚本](tools/collect.sh)
-3. 对照 [评分锚点](framework/references/scoring-anchors.md) 逐维度打分
-4. 选择场景权重计算加权总分
-5. 参照 [Clawith 评估实例](examples/clawith-evaluation.md) 撰写报告
+```bash
+# 1. 克隆目标项目
+git clone --depth 100 <repo-url> _eval && cd _eval
+
+# 2. 运行数据采集脚本
+curl -sL https://raw.githubusercontent.com/GangdanLee/openlitmus/main/tools/collect.sh | bash
+
+# 3. 对照评分锚点打分
+#    → 详见 framework/openlitmus-framework.md
+```
+
+---
 
 ## 文档
 
-- [完整框架文档](framework/oshef-framework.md)
-- [评分锚点表](framework/references/scoring-anchors.md)
-- [安全检查清单](framework/references/security-checklist.md)
-- [评估实例：Clawith](examples/clawith-evaluation.md)
+- [完整框架文档](framework/openlitmus-framework.md) — 全部方法论和评分体系
+- [评分锚点表](framework/references/scoring-anchors.md) — 量化评分标准
+- [安全检查清单](framework/references/security-checklist.md) — 9 项安全基线
+- [评估实例：Clawith](examples/clawith-evaluation.md) — 完整真实案例
 
 ## 贡献
 

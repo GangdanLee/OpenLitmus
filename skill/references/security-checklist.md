@@ -1,6 +1,6 @@
 # Security Baseline Checklist
 
-9-item checklist for OSHEF Dimension ② Indicator 2.2.
+9-item checklist for OpenLitmus Dimension ② Indicator 2.2.
 
 Each item passed = 1 point (scaled to 10). 🔴 items that fail incur an extra -1 penalty.
 
