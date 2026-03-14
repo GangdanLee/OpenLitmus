@@ -45,7 +45,7 @@ git clone --depth 100 <repo-url> _eval_tmp && cd _eval_tmp
 ### 2. Run the data collection script
 
 ```bash
-curl -sL https://raw.githubusercontent.com/<username>/oshef/main/tools/collect.sh | bash
+curl -sL https://raw.githubusercontent.com/GangdanLee/oshef/main/tools/collect.sh | bash
 ```
 
 Or manually run the commands from the [data collection toolkit](framework/oshef-framework.md#数据采集工具链).
